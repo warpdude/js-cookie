@@ -1,5 +1,5 @@
 /*!
- * jQuery Cookie Plugin
+ * JS Cookie Plugin
  * https://github.com/carhartl/jquery-cookie
  *
  * Copyright 2011, Klaus Hartl
