@@ -12,57 +12,57 @@ module('read', before);
 
 test('simple value', 1, function () {
     document.cookie = 'c=v';
-    equal($.cookie('c'), 'v', 'should return value');
+    equal(JSCookie.cookie('c'), 'v', 'should return value');
 });
 
 test('empty value', 1, function () {
-    $.cookie('c', '');
-    equal($.cookie('c'), '', 'should return value');
+    JSCookie.cookie('c', '');
+    equal(JSCookie.cookie('c'), '', 'should return value');
 });
 
 test('not existing', 1, function () {
-    equal($.cookie('whatever'), null, 'should return null');
+    equal(JSCookie.cookie('whatever'), null, 'should return null');
 });
 
 test('decode', 1, function () {
     document.cookie = encodeURIComponent(' c') + '=' + encodeURIComponent(' v');
-    equal($.cookie(' c'), ' v', 'should decode key and value');
+    equal(JSCookie.cookie(' c'), ' v', 'should decode key and value');
 });
 
 test('raw: true', 1, function () {
     document.cookie = 'c=%20v';
-    equal($.cookie('c', { raw: true }), '%20v', 'should not decode');
+    equal(JSCookie.cookie('c', { raw: true }), '%20v', 'should not decode');
 });
 
 
 module('write', before);
 
 test('String primitive', 1, function () {
-    $.cookie('c', 'v');
+    JSCookie.cookie('c', 'v');
     equal(document.cookie, 'c=v', 'should write value');
 });
 
 test('String object', 1, function () {
-    $.cookie('c', new String('v'));
+    JSCookie.cookie('c', new String('v'));
     equal(document.cookie, 'c=v', 'should write value');
 });
 
 test('value "[object Object]"', 1, function() {
-    $.cookie('c', '[object Object]');
-    equal($.cookie('c'), '[object Object]', 'should write value');
+    JSCookie.cookie('c', '[object Object]');
+    equal(JSCookie.cookie('c'), '[object Object]', 'should write value');
 });
 
 test('number', 1, function() {
-    $.cookie('c', 1234);
-    equal($.cookie('c'), '1234', 'should write value');
+    JSCookie.cookie('c', 1234);
+    equal(JSCookie.cookie('c'), '1234', 'should write value');
 });
 
 test('return value', 1, function () {
-    equal($.cookie('c', 'v'), 'c=v', 'should return written cookie string');
+    equal(JSCookie.cookie('c', 'v'), 'c=v', 'should return written cookie string');
 });
 
 test('raw: true', 1, function () {
-    equal($.cookie('c', ' v', { raw: true }).split('=')[1],
+    equal(JSCookie.cookie('c', ' v', { raw: true }).split('=')[1],
         ' v', 'should not encode');
 });
 
@@ -71,10 +71,10 @@ module('delete', before);
 
 test('delete', 2, function () {
     document.cookie = 'c=v';
-    $.cookie('c', null);
+    JSCookie.cookie('c', null);
     equal(document.cookie, '', 'should delete with null as value');
 
     document.cookie = 'c=v';
-    $.cookie('c', undefined);
+    JSCookie.cookie('c', undefined);
     equal(document.cookie, '', 'should delete with undefined as value');
 });
