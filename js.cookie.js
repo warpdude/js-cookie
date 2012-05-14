@@ -7,8 +7,8 @@
  * http://www.opensource.org/licenses/mit-license.php
  * http://www.opensource.org/licenses/GPL-2.0
  */
-!function(window, document){
-  window.JSCookie = {
+!function(exports){
+  exports.JSCookie = {
     cookie: function(key, value, options){
       // key and at least value given, set cookie...
       if (arguments.length > 1 && (!/Object/.test(Object.prototype.toString.call(value)) || value === null || value === undefined)) {
@@ -50,4 +50,4 @@
       return null;
     }
   }
-}(window, document);
+}(window);
